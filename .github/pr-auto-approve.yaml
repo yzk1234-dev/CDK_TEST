@@ -1,0 +1,16 @@
+# https://qiita.com/sounisi5011/items/eba7cf3ed65973e6edb2
+name: Auto Approve PRs
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - main
+jobs:
+  auto-approve:
+    if: github.event.pull_request.user.login == 'steeeeel' && ! github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Auto approve PRs
+        uses: hmarr/auto-approve-action@v3
