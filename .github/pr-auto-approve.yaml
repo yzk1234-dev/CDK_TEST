@@ -5,6 +5,7 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
       - main
+      - master
 jobs:
   auto-approve:
     if: github.event.pull_request.user.login == 'steeeeel' && ! github.event.pull_request.draft
